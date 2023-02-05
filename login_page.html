@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In page</title>
+    <link rel="stylesheet" href="assets/css/log_in.css">
+
 </head>
 
 <body>
@@ -15,6 +18,22 @@
 
 
     <script>
+
+        let right_container=document.createElement("div");
+        right_container.setAttribute("class","right_container");
+        document.querySelector(".main").append(right_container);
+
+
+        // right main divider
+
+        let content_of_log_in = document.createElement("div");
+        content_of_log_in.setAttribute("class", "sign_in");
+        right_container.append(content_of_log_in);
+
+        // let gif=document.createElement("img");
+        // gif.setAttribute("src","assets/img/Online-Bank-Account-Zil.gif");
+        // gif.setAttribute("alt","give and back");
+        // right_container.append(gif);
 
         //left side start...
 
@@ -35,19 +54,22 @@
         pickup.innerText = "You are 30 seconds away to experiencing your new Banking World ";
         welcome.append(pickup);
 
+        // let account= document.createElement("div");
+        // account.setAttribute("class","full_account");
+        // welcome.append(account);
+
         let button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
-        button.innerText = "Sign Up"
+        button.innerText = ("Have an account ?");
         welcome.append(button);
+
+
 
         // left side was end.....
 
 
         //Right side main divider
 
-        let content_of_log_in = document.createElement("div");
-        content_of_log_in.setAttribute("class", "sign_up");
-        document.querySelector(".main").append(content_of_log_in);
 
         let start = document.createElement("div");
         start.setAttribute("class", "start");
@@ -120,7 +142,7 @@
 
             let label_text = document.createElement("label");
             label_text.setAttribute("for", obj[i]["for"]);
-            label_text.innerText = obj[i]["text"];
+            label_text.innerText = obj[i]["text"] + ":";
             form.append(label_text);
 
             let input_box = document.createElement("input");
