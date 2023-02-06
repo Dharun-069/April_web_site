@@ -11,6 +11,8 @@
 
 <body>
 
+    <button type="button" onclick="signup()">next</button>
+
     <div class="main">
 
     </div>
@@ -93,23 +95,23 @@
 
             {
 
-                "for": "new",
+                "for": "new_pass",
                 "text": "",
 
                 "type": "text",
-                "name": "new",
-                "id": "new",
+                "name": "new_pass",
+                "id": "new_pass",
                 "placeholder": "Create password *"
             },
 
             {
 
-                "for": "create",
+                "for": "confirm",
                 "text": "",
 
                 "type": "text",
-                "name": "create",
-                "id": "create",
+                "name": "confirm",
+                "id": "confirm",
                 "placeholder": "Confirm password *"
             }
 
@@ -122,7 +124,7 @@
         document.querySelector(".main").append(welcome);
 
         let image = document.createElement("img");
-        image.setAttribute("src","assets/img/money.gif");
+        image.setAttribute("src", "assets/img/money.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
@@ -204,31 +206,43 @@
 
         //date of birth
 
+        let bottom_form = document.createElement("div");
+        bottom_form.setAttribute("class", "bottom_form");
+        content_of_singnup.append(bottom_form);
+
+        let dob_child=document.createElement("div");
+        dob_child.setAttribute("class","dob_child");
+        bottom_form.append(dob_child);
+
         let dob_label = document.createElement("label");
         dob_label.setAttribute("for", "dob");
-        form.append(dob_label);
+        dob_child.append(dob_label);
 
         let dob = document.createElement("input");
         dob.setAttribute("type", "date");
         dob.setAttribute("name", "dob");
         dob.setAttribute("id", "dob");
-        form.append(dob);
+        dob_child.append(dob);
 
 
         //Gender label and input
 
         let div_of_gender = document.createElement("div");
         div_of_gender.setAttribute("class", "gender");
-        form.append(div_of_gender);
+        bottom_form.append(div_of_gender);
 
-        let heading_gender=document.createElement("h4");
-        heading_gender.innerText="Gender:";
+        let heading_gender = document.createElement("h4");
+        heading_gender.innerText = "Gender:";
         div_of_gender.append(heading_gender);
+
+        let require=document.createElement("div");
+        require.setAttribute("class","require");
+        div_of_gender.append(require);
 
 
         let gen_div = document.createElement("div");
         gen_div.setAttribute("class", "align_gen");
-        div_of_gender.append(gen_div);
+        require.append(gen_div);
 
         let ladi_div = document.createElement("div");
         ladi_div.setAttribute("class", "align_gen");
@@ -270,6 +284,7 @@
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Next >>");
+
         bottom_button.append(next);
 
         function signup() {
@@ -280,24 +295,24 @@
             const phone = document.getElementById("phone").value
             const aadhar = document.getElementById("aadhar").value
             const pan = document.getElementById("pan").value
+            const new_pass = document.getElementById("new").value
+            const confirm = document.getElementById("confirm").value
 
-            console.log(first_name)
-            console.log(last_name)
-            console.log(email)
-            console.log(phone)
-            console.log(aadhar)
-            console.log(pan)
 
             //logalStorage.setItem("key", value)
 
             localStorage.setItem("fname", first_name)
             localStorage.setItem("lname", last_name)
             localStorage.setItem("email", email)
-            localStorage.setItem("password", phone)
+            localStorage.setItem("phone", phone)
             localStorage.setItem("aadhar", aadhar)
             localStorage.setItem("pan", pan)
+            localStorage.setItem("new_pass", new_pass)
+            localStorage.setItem("confirm", confirm)
 
-            window.location.href = "pages/login.html"
+
+
+            window.location.href = "../pages/login.html"
 
         }
 

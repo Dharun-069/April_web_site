@@ -48,6 +48,7 @@
 
 }
 
+
 .for_button {
     /* background-color: rgba(0,98,211,255); */
     padding: 1.5%;
@@ -88,6 +89,7 @@
     color: black;
 }
 
+
 form {
     display: flex;
     flex-wrap: wrap;
@@ -96,6 +98,36 @@ form {
 
 }
 
+.bottom_form{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.gender{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-right: 160px;
+
+}
+
+/* .align_gen{
+    display: flex;
+    flex-direction: column;
+} */
+.dob_child{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.require{
+    display: flex;
+    flex-wrap: wrap;
+}
 .btm_btn {
     display: flex;
     justify-content: center;
@@ -123,12 +155,13 @@ form {
 
 /* All page imput box and select box style */
 input {
-    border-radius: 7px;
+    /* border-radius: 7px; */
     border: 0px;
     box-shadow: 0px 1px rgb(85, 84, 84);
     margin: 30px;
     padding: 10px;
     width: 27%;
+    background: #f7f9fb;
 }
 
 input:focus {
@@ -142,9 +175,12 @@ input[type="radio"] {
     width: 50px;
     margin: 0px;
     font-size: 20px;
-
 }
 
 input[type="radio"][label] {
     font-size: 15px;
+}
+
+input[type="date"]{
+    width: 40%;
 }
