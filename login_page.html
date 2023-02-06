@@ -19,21 +19,11 @@
 
     <script>
 
-        let right_container=document.createElement("div");
-        right_container.setAttribute("class","right_container");
-        document.querySelector(".main").append(right_container);
-
-
         // right main divider
 
         let content_of_log_in = document.createElement("div");
         content_of_log_in.setAttribute("class", "sign_in");
-        right_container.append(content_of_log_in);
-
-        // let gif=document.createElement("img");
-        // gif.setAttribute("src","assets/img/Online-Bank-Account-Zil.gif");
-        // gif.setAttribute("alt","give and back");
-        // right_container.append(gif);
+        document.querySelector(".main").append(content_of_log_in);
 
         //left side start...
 
@@ -75,9 +65,20 @@
         start.setAttribute("class", "start");
         content_of_log_in.append(start);
 
+        let right_container=document.createElement("div");
+        right_container.setAttribute("class","right_container");
+        content_of_log_in.append(right_container);
+
         let form = document.createElement("form");
         form.setAttribute("method", "post");
-        content_of_log_in.append(form);
+        right_container.append(form);
+
+        let gif=document.createElement("img");
+        gif.setAttribute("src","assets/img/Online-Bank-Account-Zil.gif");
+        gif.setAttribute("alt","give and back");
+        right_container.append(gif);
+
+
 
         let bottom_button = document.createElement("div");
         bottom_button.setAttribute("class", "btm_btn");
