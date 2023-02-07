@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In page</title>
-    <link rel="stylesheet" href="assets/css/log_in.css">
+    <link rel="stylesheet" href="../../assets/css/log_in.css">
 
 </head>
 
@@ -15,8 +15,6 @@
 
     <div class="main">
     </div>
-
-
     <script>
 
         // right main divider
@@ -32,7 +30,7 @@
         document.querySelector(".main").append(welcome);
 
         let image = document.createElement("img");
-        image.setAttribute("src", "assets/img/log_in.gif");
+        image.setAttribute("src", "../assets/img/log_in.gif");
         image.setAttribute("alt", "Net Bliz");
         document.querySelector(".welcome").append(image);
 
@@ -48,10 +46,16 @@
         // account.setAttribute("class","full_account");
         // welcome.append(account);
 
+        let a = document.createElement("a");
+        a.setAttribute("href","../index.html");
+        welcome.append(a)
+
+
         let button = document.createElement("button");
         button.setAttribute("class", "welcome_button");
+        // button.setAttribute("")
         button.innerText = ("Have an account ?");
-        welcome.append(button);
+        a.append(button);
 
 
 
@@ -65,17 +69,18 @@
         start.setAttribute("class", "start");
         content_of_log_in.append(start);
 
-        let right_container=document.createElement("div");
-        right_container.setAttribute("class","right_container");
+        let right_container = document.createElement("div");
+        right_container.setAttribute("class", "right_container");
         content_of_log_in.append(right_container);
 
         let form = document.createElement("form");
-        form.setAttribute("method", "post");
+        // form.setAttribute("method", "post");
+        form.setAttribute("id", "singupform")
         right_container.append(form);
 
-        let gif=document.createElement("img");
-        gif.setAttribute("src","assets/img/Online-Bank-Account-Zil.gif");
-        gif.setAttribute("alt","give and back");
+        let gif = document.createElement("img");
+        gif.setAttribute("src", "../assets/img/Online-Bank-Account-Zil.gif");
+        gif.setAttribute("alt", "give and back");
         right_container.append(gif);
 
 
@@ -151,17 +156,54 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
+            input_box.setAttribute("required", "");
             form.append(input_box);
 
         }
 
         let next = document.createElement("button");
+        next.setAttribute("type","submit");
         next.setAttribute("class", "bottom_button");
+        // next.setAttribute("onclick", "login()")
         next.innerText = ("Login");
-        bottom_button.append(next);
+        form.append(next);
 
 
+        const singupform_page = document.getElementById("singupform");
+
+        singupform_page.onsubmit = e => {
+
+            // let full_name = document.getElementById("fullname").value
+            // let email= document.getElementById("email").value
+            // let pass=document.getElementById("password").value
+
+
+            // let name=localStorage.getItem("fname")
+            // let email_co=localStorage.getItem("email")
+            // let password=localStorage.getItem("password")
+
+
+
+            let object = {};
+
+            object["fullname"]=document.getElementById("fullname").value
+            object["email"]=document.getElementById("email").value
+            object["password"]=document.getElementById("password").value
+
+            let store= JSON.parse(localStorage.getItem("array")) || []; //store = []
+            store.push(object);//[{name, email, pass}]
+            localStorage.setItem("array",JSON.stringify(store)); // array :  [{name, email, pass}]
+
+            window.location.href = "homepage.html"
+           
+
+        }
+
+        // function login(){
+          
+        // }
     </script>
+    
 </body>
 
 </html>
