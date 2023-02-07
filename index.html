@@ -11,12 +11,9 @@
 
 <body>
 
-    <button type="button" onclick="signup()">next</button>
-
     <div class="main">
 
     </div>
-
 
     <script>
 
@@ -32,7 +29,8 @@
                 "type": "text",
                 "name": "fname",
                 "id": "fname",
-                "placeholder": "First Name *"
+                "placeholder": "First Name *",
+                "required": "required"
 
             },
 
@@ -184,7 +182,7 @@
         // Form is started this point
 
         let form = document.createElement("form");
-        form.setAttribute("method", "post");
+        // form.setAttribute("method", "post");
         content_of_singnup.append(form);
 
         for (let i = 0; i < 8; i++) {
@@ -200,7 +198,11 @@
             input_box.setAttribute("name", obj[i]["name"]);
             input_box.setAttribute("id", obj[i]["id"]);
             input_box.setAttribute("placeholder", obj[i]["placeholder"]);
+            input_box.setAttribute("required", "");
+
             form.append(input_box);
+
+
 
         }
 
@@ -210,8 +212,9 @@
         bottom_form.setAttribute("class", "bottom_form");
         content_of_singnup.append(bottom_form);
 
-        let dob_child=document.createElement("div");
-        dob_child.setAttribute("class","dob_child");
+        let dob_child = document.createElement("div");
+        dob_child.setAttribute("class", "dob_child");
+
         bottom_form.append(dob_child);
 
         let dob_label = document.createElement("label");
@@ -235,8 +238,8 @@
         heading_gender.innerText = "Gender:";
         div_of_gender.append(heading_gender);
 
-        let require=document.createElement("div");
-        require.setAttribute("class","require");
+        let require = document.createElement("div");
+        require.setAttribute("class", "require");
         div_of_gender.append(require);
 
 
@@ -284,10 +287,19 @@
         let next = document.createElement("button");
         next.setAttribute("class", "bottom_button");
         next.innerText = ("Next >>");
+        next.setAttribute("onclick", "signup()")
+        form.append(next);
 
-        bottom_button.append(next);
 
+        let btn=document.querySelector(".bottom_button")
+        btn.addEventListener("onSubmit",function(e){
+            e.target.preventDefault;
+            signup();
+        })
         function signup() {
+
+            // document.getElementById("fname").attributes["required"] = true;
+
 
             const first_name = document.getElementById("fname").value
             const last_name = document.getElementById("lname").value
@@ -295,25 +307,27 @@
             const phone = document.getElementById("phone").value
             const aadhar = document.getElementById("aadhar").value
             const pan = document.getElementById("pan").value
-            const new_pass = document.getElementById("new").value
+            const new_pass = document.getElementById("new_pass").value
             const confirm = document.getElementById("confirm").value
 
 
-            //logalStorage.setItem("key", value)
-
-            localStorage.setItem("fname", first_name)
-            localStorage.setItem("lname", last_name)
-            localStorage.setItem("email", email)
-            localStorage.setItem("phone", phone)
-            localStorage.setItem("aadhar", aadhar)
-            localStorage.setItem("pan", pan)
-            localStorage.setItem("new_pass", new_pass)
-            localStorage.setItem("confirm", confirm)
-
-
-
-            window.location.href = "../pages/login.html"
-
+            if (first_name!="" && last_name!="" && email!="") {
+                localStorage.setItem("fname", first_name)
+                localStorage.setItem("lname", last_name)
+                localStorage.setItem("email", email)
+                localStorage.setItem("phone", phone)
+                localStorage.setItem("aadhar", aadhar)
+                localStorage.setItem("pan", pan)
+                localStorage.setItem("new_pass", new_pass)
+                localStorage.setItem("confirm", confirm)
+                window.location.href = "../pages/login_page.html"
+        
+            }
+            else {
+                alert("fill the fields")
+               
+            }
+    
         }
 
     </script>
